@@ -14,24 +14,34 @@ namespace holidaymaker {
       void        setSurname(const char *surname);
       const char *getSurname();
     
+      void        setWorktime(int worktime);
+      int         getWorktine();
+      
+      /*Workdays for a week*/
+      void        setWorkdays(int workdays);
+      int         getWorkdays();
+      
       /*Birthday*/
       void        setBirthdayDay(int day);
       int         getBirthdayDay();
     
       void        setBirthdayMonth(int month);
-      int         getBirthdayMounth();
+      int         getBirthdayMonth();
     
       void        setBirthdayYear(int year);
       int         getBirthdayYear();
     
       Employee   *nextEmployee();
-    
+      
   private:
       Employee();
       ~Employee();
       int       _ID;
       char     *_Forename;
       char     *_Surname;
+      int       _Worktime;
+      int       _Workdays;
+      int       _Holidays;
       /*Birthday*/
       int       _BirthdayDay;
       int       _BirthdayMonth;
@@ -53,6 +63,8 @@ namespace holidaymaker {
     
     Employee *getfirstEmployee();
     Employee *getlastEmployee();
+    
+    int       getEmployeeSize();
   private:
     Employee *_firstEmployee;
     Employee *_lastEmployee;

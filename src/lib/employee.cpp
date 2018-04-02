@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <config.h>
 #include <algorithm>
 #include <cstring>
@@ -36,7 +37,23 @@ void holidaymaker::Employee::setSurname(const char *surname){
 const char *holidaymaker::Employee::getSurname(){
   return _Surname;  
 }
-    
+
+void holidaymaker::Employee::setWorktime(int worktime){
+  _Worktime=worktime;
+}
+
+int holidaymaker::Employee::getWorktine(){
+  return _Worktime;
+}
+
+void holidaymaker::Employee::setWorkdays(int workdays){
+  _Workdays=workdays;
+}
+
+int holidaymaker::Employee::getWorkdays(){
+  return _Workdays;  
+}
+
 void holidaymaker::Employee::setBirthdayDay(int day){
   _BirthdayDay=day;
 }
@@ -49,7 +66,7 @@ void holidaymaker::Employee::setBirthdayMonth(int month){
   _BirthdayMonth=month;
 }
 
-int holidaymaker::Employee::getBirthdayMounth(){
+int holidaymaker::Employee::getBirthdayMonth(){
    return _BirthdayMonth; 
 }
     
@@ -69,6 +86,8 @@ holidaymaker::Employee::Employee(){
   _ID=-1;
   _Forename=NULL;
   _Surname=NULL;
+  _Workdays=5;
+  _Worktime=40;
   /*Birthday*/
   _BirthdayDay=1;
   _BirthdayMonth=1;
@@ -142,6 +161,14 @@ holidaymaker::Employee * holidaymaker::EmployeePool::getlastEmployee(){
   return _lastEmployee;
 }
 
+int holidaymaker::EmployeePool::getEmployeeSize(){
+  int count=0;
+  for(holidaymaker::Employee *curemployee=_firstEmployee; curemployee; curemployee=curemployee->nextEmployee()){
+    count++;
+  }
+  return count;
+}
+
 bool holidaymaker::EmployeePool::loadFile(const char* path){
   _XMLFile->LoadFile(path);
   if(_XMLFile->ErrorID() == 0) { 
@@ -158,7 +185,11 @@ bool holidaymaker::EmployeePool::loadFile(const char* path){
             }
             addempl->_ID=curempl->IntAttribute("id");
             addempl->setForename(curempl->Attribute("forename"));
-            addempl->setSurname(curempl->Attribute("surname"));  
+            addempl->setSurname(curempl->Attribute("surname"));
+            const char *btpl =curempl->Attribute("birthday");
+            sscanf(btpl,"%d/%d/%d",&addempl->_BirthdayDay,
+                                   &addempl->_BirthdayMonth,
+                                   &addempl->_BirthdayYear);
         }
         return true;
       }else{
@@ -193,6 +224,10 @@ bool holidaymaker::EmployeePool::saveFile(const char* path){
     newempl->SetAttribute("id",curemply->getID());
     newempl->SetAttribute("forename",curemply->getForename());
     newempl->SetAttribute("surname",curemply->getSurname());
+    std::stringstream bstream;
+    bstream << curemply->getBirthdayDay() << "/" << curemply->getBirthdayMonth() 
+            << "/" << curemply->getBirthdayYear(); 
+    newempl->SetAttribute("birthday",bstream.str().c_str());
     emplnode->InsertEndChild(newempl);
   }
    if(_XMLFile->SaveFile(path)==0)

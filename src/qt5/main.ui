@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>801</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>HolidayMaker</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="employeemngt">
+     <attribute name="title">
+      <string>Mitarbeiterverwaltung</string>
+     </attribute>
+     <widget class="QTableWidget" name="employee_tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>791</width>
+        <height>461</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="delemployee_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>470</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Löschen</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addemployee_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>470</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Hinzufügen</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="editemployee_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>470</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Bearbeiten</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="holidayadd">
+     <attribute name="title">
+      <string>Urlaubsantrag</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="holidayview">
+     <attribute name="title">
+      <string>Urlaubsübersicht</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="holidayhistory">
+     <attribute name="title">
+      <string>Urlaubsarchiv</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="settings">
+     <attribute name="title">
+      <string>Einstellungen</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
